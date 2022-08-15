@@ -13,5 +13,7 @@ dotnet new tool-manifest
 
 dotnet tool install --local dotnet-ef --version 5.0.5
 
+cd BackendAPI
+
 dotnet dotnet-ef database update 
 
