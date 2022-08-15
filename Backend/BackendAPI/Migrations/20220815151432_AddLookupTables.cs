@@ -14,7 +14,8 @@ namespace BackendAPI.Migrations
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     scriptName = table.Column<string>(type: "text", nullable: true),
-                    path = table.Column<string>(type: "text", nullable: true)
+                    path = table.Column<string>(type: "text", nullable: true),
+                    lang = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
