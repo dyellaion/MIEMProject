@@ -27,6 +27,9 @@ namespace BackendAPI
                 case "shell":
                     ret = new ShellExecutor(path);
                     break;
+                case "js":
+                    ret = new JSExecuter(path);
+                    break;
                 default:
                     throw new ArgumentException();
             }
