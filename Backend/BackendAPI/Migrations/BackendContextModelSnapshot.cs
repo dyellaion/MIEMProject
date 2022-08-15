@@ -25,6 +25,9 @@ namespace BackendAPI.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("lang")
+                        .HasColumnType("text");
+
                     b.Property<string>("path")
                         .HasColumnType("text");
 

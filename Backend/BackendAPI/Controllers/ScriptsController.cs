@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,6 +36,16 @@ namespace BackendAPI.Controllers
             if (script == null)
             {
                 return NotFound();
+            }
+
+            IScriptExecuter executer = ExecManager.GetExecuter(script.lang, script.path);
+            try
+            {
+                executer.Execute();
+            }
+            catch (Exception e)
+            {
+                return Problem(null, null,500);
             }
 
             return script;

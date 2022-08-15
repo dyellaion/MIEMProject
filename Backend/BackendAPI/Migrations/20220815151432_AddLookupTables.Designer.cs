@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BackendAPI.Migrations
 {
     [DbContext(typeof(BackendContext))]
-    [Migration("20220814123125_AddLookupTables")]
+    [Migration("20220815151432_AddLookupTables")]
     partial class AddLookupTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,9 @@ namespace BackendAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("lang")
+                        .HasColumnType("text");
 
                     b.Property<string>("path")
                         .HasColumnType("text");
