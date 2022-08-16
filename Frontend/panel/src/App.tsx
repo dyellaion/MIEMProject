@@ -4,6 +4,7 @@ import PageWrapper from "./pages/PageWrapper/PageWrapper";
 import ScriptsPage from "./pages/ScriptsPage/ScriptsPage";
 
 import "./App.css";
+import CreationPage from "./pages/CreationPage/CreationPage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route path="/" element={<PageWrapper />}>
             <Route index element={<IndexPage />} />
             <Route path="scripts" element={<ScriptsPage />} />
-            <Route path="create" />
+            <Route path="create" element={<CreationPage />}/>
         </Route>
       </Routes>
     </Router>
