@@ -1,8 +1,32 @@
+.containerLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .formLayout {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  border-top: 3px solid #1976d2;
+  border-bottom: 3px solid #1976d2;
+  border-radius: 10px;
+  max-width: 300px;
+
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.typography {
+  color: #fff;
+  background-color: #1976d2;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
 .labelLayout {
@@ -12,4 +36,8 @@
   justify-content: center;
 
   margin: 10px 0;
+}
+
+.labelLayout > * {
+  margin-bottom: 5px;
 }
