@@ -1,5 +1,4 @@
 import {
-  Badge,
   Chip,
   Container,
   Button,
@@ -25,8 +24,16 @@ class CreationPage extends React.Component<{}, Script> {
   };
 
   submitHandler() {
-    if (this.state.scriptName === "" || this.state.path === "") {
+    if (
+      this.state.scriptName === "" ||
+      this.state.path === "" ||
+      this.state.lang === ""
+    ) {
       alert("Something is empty");
+    } else {
+      alert(
+        `${this.state.scriptName} : ${this.state.path} : ${this.state.lang}`
+      );
     }
   }
 
@@ -52,8 +59,8 @@ class CreationPage extends React.Component<{}, Script> {
   selectHandler(e: SelectChangeEvent<string>) {
     console.log(e.target.value);
     this.setState({
-      lang: e.target.value
-    })
+      lang: e.target.value,
+    });
   }
 
   render(): React.ReactNode {
@@ -65,9 +72,7 @@ class CreationPage extends React.Component<{}, Script> {
         <Typography variant="h5" component="div" className={styles.typography}>
           Add new script
         </Typography>
-        <form
-          className={styles.formLayout}
-        >
+        <form className={styles.formLayout}>
           <label className={styles.labelLayout}>
             <Chip label="Script name" color="info" />
             <TextField
@@ -92,7 +97,7 @@ class CreationPage extends React.Component<{}, Script> {
           </label>
           <label className={styles.labelLayout}>
             <Chip label="File extension" color="info" />
-            <FormControl fullWidth sx={{mt: "20px"}}>
+            <FormControl fullWidth sx={{ mt: "20px" }}>
               <InputLabel id="lang-label">Ext</InputLabel>
               <Select
                 labelId="lang-label"
@@ -107,7 +112,11 @@ class CreationPage extends React.Component<{}, Script> {
               </Select>
             </FormControl>
           </label>
-          <Button variant="contained" sx={{ m: "10px" }} onClick={() => this.submitHandler()}>
+          <Button
+            variant="contained"
+            sx={{ m: "10px" }}
+            onClick={() => this.submitHandler()}
+          >
             Save
           </Button>
         </form>
