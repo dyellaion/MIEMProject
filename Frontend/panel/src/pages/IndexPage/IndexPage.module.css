@@ -1,0 +1,19 @@
+.layout {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.nulledLink {
+  text-decoration: none;
+  color: inherit;
+}
