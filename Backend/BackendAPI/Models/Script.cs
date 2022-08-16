@@ -5,5 +5,6 @@ namespace BackendAPI.Models
         public int ID { get; set; }
         public string scriptName { get; set; }
         public string path { get; set; }
+        public string lang { get; set; }
     }
 }

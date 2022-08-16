@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BackendAPI.Migrations
 {
     [DbContext(typeof(BackendContext))]
-    [Migration("20220814123125_AddLookupTables")]
-    partial class AddLookupTables
+    [Migration("20220815201736_SeedingDB")]
+    partial class SeedingDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,9 @@ namespace BackendAPI.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("lang")
+                        .HasColumnType("text");
+
                     b.Property<string>("path")
                         .HasColumnType("text");
 
@@ -36,6 +39,22 @@ namespace BackendAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Scripts");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            lang = "python",
+                            path = "test.py",
+                            scriptName = "test.py"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            lang = "ruby",
+                            path = "test.rb",
+                            scriptName = "test.rb"
+                        });
                 });
 #pragma warning restore 612, 618
         }

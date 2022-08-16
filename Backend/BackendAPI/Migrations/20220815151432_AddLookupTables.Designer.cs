@@ -2,15 +2,17 @@
 using BackendAPI.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BackendAPI.Migrations
 {
     [DbContext(typeof(BackendContext))]
-    partial class BackendContextModelSnapshot : ModelSnapshot
+    [Migration("20220815151432_AddLookupTables")]
+    partial class AddLookupTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,22 +39,6 @@ namespace BackendAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Scripts");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            lang = "python",
-                            path = "test.py",
-                            scriptName = "test.py"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            lang = "ruby",
-                            path = "test.rb",
-                            scriptName = "test.rb"
-                        });
                 });
 #pragma warning restore 612, 618
         }
