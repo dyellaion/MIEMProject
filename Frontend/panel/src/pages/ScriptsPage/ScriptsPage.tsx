@@ -1,4 +1,5 @@
 import { Container, Grid } from "@mui/material";
+import axios from "axios";
 import React from "react";
 import ScriptCard from "../../layout/ScriptCard/ScriptCard";
 
@@ -33,14 +34,35 @@ const response = [
     scriptName: "Wordpress xss",
     path: "home/usr/Wordpress/XSS.c",
     lang: "c",
-  }
+  },
 ];
 
-class ScriptsPage extends React.Component {
+class ScriptsPage extends React.Component<{}, CreationPageState> {
+  state = {
+    scripts: [
+      {
+        id: 0,
+        scriptName: "No scripts available",
+        path: "no path",
+        lang: "c",
+      },
+    ],
+  };
+
+  componentDidMount() {
+    axios.get("localhost:5000/scripts").then((res) => {
+      const data = res.data;
+      this.setState(data);
+    });
+  }
+
   render(): React.ReactNode {
     return (
-      <Container style={{display: "flex"}} className={styles.scriptPageLayout}>
-        {response.map((item) => {
+      <Container
+        style={{ display: "flex" }}
+        className={styles.scriptPageLayout}
+      >
+        {this.state.scripts.map((item) => {
           return <ScriptCard key={item.id} data={item} />;
         })}
       </Container>
