@@ -38,16 +38,6 @@ const response = [
 ];
 
 class ScriptsPage extends React.Component<{}, CreationPageState> {
-  state = {
-    scripts: [
-      {
-        id: 0,
-        scriptName: "No scripts available",
-        path: "no path",
-        lang: "c",
-      },
-    ],
-  };
 
   componentDidMount() {
     axios.get("localhost:5000/scripts").then((res) => {
