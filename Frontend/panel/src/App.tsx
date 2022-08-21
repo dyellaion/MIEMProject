@@ -5,6 +5,7 @@ import ScriptsPage from "./pages/ScriptsPage/ScriptsPage";
 
 import "./App.css";
 import CreationPage from "./pages/CreationPage/CreationPage";
+import HistoryPage from "./pages/HistoryPage/HistoryPage";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/" element={<PageWrapper />}>
             <Route index element={<IndexPage />} />
             <Route path="scripts" element={<ScriptsPage />} />
-            <Route path="create" element={<CreationPage />}/>
+            <Route path="create" element={<CreationPage />} />
+            <Route path="history" element={<HistoryPage />} />
         </Route>
       </Routes>
     </Router>

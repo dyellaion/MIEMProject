@@ -40,6 +40,14 @@ class PageWrapper extends React.Component<{}> {
                 Add new script
               </Button>
             </Link>
+            <Link
+              to="history"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Button color="inherit" variant="outlined" sx={{ mr: "20px" }}>
+                Execution history
+              </Button>
+            </Link>
           </Toolbar>
         </AppBar>
         <Outlet />

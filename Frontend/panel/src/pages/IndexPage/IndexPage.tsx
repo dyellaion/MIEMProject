@@ -21,6 +21,11 @@ class IndexPage extends React.Component {
               Create new script
             </Button>
           </Link>
+          <Link to="history" className={styles.nulledLink}>
+            <Button variant="contained" sx={{ m: "10px" }}>
+              Execution history
+            </Button>
+          </Link>
         </div>
       </div>
     );

@@ -4,3 +4,9 @@ export interface Script {
   path: string;
   lang: string;
 }
+
+export interface History {
+  id: number;
+  scriptName: string;
+  date: string;
+}
