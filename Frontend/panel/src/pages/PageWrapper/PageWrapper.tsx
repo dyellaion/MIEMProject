@@ -1,17 +1,12 @@
 import React from "react";
 
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { AccessibleForward, Menu } from "@mui/icons-material";
 
-type WrapperState = {
-  
-}
+type WrapperState = {};
 
 class PageWrapper extends React.Component<{}> {
-
-  
-
   render(): React.ReactNode {
     return (
       <div>
@@ -26,15 +21,33 @@ class PageWrapper extends React.Component<{}> {
             >
               <AccessibleForward />
             </IconButton>
-            <Typography variant="h6" component="div" sx={{mr: "100px"}}>
+            <Typography variant="h6" component="div" sx={{ mr: "100px" }}>
               Scripts Configurator
             </Typography>
-            <Button color="inherit" variant="outlined" sx={{mr: "20px"}}>
-              Scripts list
-            </Button>
-            <Button color="inherit" variant="outlined" sx={{mr: "20px"}}>
-              Add new script
-            </Button>
+            <Link
+              to="scripts"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Button color="inherit" variant="outlined" sx={{ mr: "20px" }}>
+                Scripts list
+              </Button>
+            </Link>
+            <Link
+              to="create"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Button color="inherit" variant="outlined" sx={{ mr: "20px" }}>
+                Add new script
+              </Button>
+            </Link>
+            <Link
+              to="history"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Button color="inherit" variant="outlined" sx={{ mr: "20px" }}>
+                Execution history
+              </Button>
+            </Link>
           </Toolbar>
         </AppBar>
         <Outlet />
