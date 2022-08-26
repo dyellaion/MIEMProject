@@ -48,6 +48,33 @@ namespace BackendAPI.Controllers
                 return Problem(null, null,500);
             }
 
+            ScriptRunning scriptRunning = new ScriptRunning();
+            scriptRunning.ScriptID = id;
+            scriptRunning.DateTime = DateTime.Now;
+
+
+            if (!(_context.ScriptsRunning.Any(e => e.ScriptID == id)))
+            {
+                _context.ScriptsRunning.Add(scriptRunning);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var found = _context.ScriptsRunning.FirstOrDefault(s => s.ScriptID.Equals((id)));
+                scriptRunning.ID = found.ID;
+                var local = _context.Set<ScriptRunning>()
+                    .Local
+                    .FirstOrDefault(s => s.ScriptID == id);
+                if (local != null)
+                {
+                    // detach
+                    _context.Entry(local).State = EntityState.Detached;
+                }
+                // set Modified flag in your entry
+                _context.Entry(scriptRunning).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+
             return script;
         }
 
@@ -112,6 +139,11 @@ namespace BackendAPI.Controllers
         private bool ScriptExists(int id)
         {
             return _context.Scripts.Any(e => e.ID == id);
+        }
+
+        private bool ScriptRunningExist(int id)
+        {
+            return _context.ScriptsRunning.Any(e => e.ScriptID == id);
         }
     }
 }
