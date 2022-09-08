@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import ScriptCard from "../../layout/ScriptCard/ScriptCard";
@@ -38,9 +38,15 @@ const response = [
 ];
 
 class ScriptsPage extends React.Component<{}, CreationPageState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      scripts: []
+    }
+  }
 
   componentDidMount() {
-    axios.get("localhost:5000/scripts").then((res) => {
+    axios.get("http://localhost:5000/Scripts").then((res) => {
       const data = res.data;
       this.setState(data);
     });

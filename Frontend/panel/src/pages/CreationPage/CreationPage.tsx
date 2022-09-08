@@ -10,8 +10,8 @@ import {
   MenuItem,
   SelectChangeEvent,
 } from "@mui/material";
-import axios from "axios";
-import React, { ChangeEvent, FormEvent } from "react";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import React, { ChangeEvent } from "react";
 import { Script } from "../../types/response";
 
 import styles from "./CreationPage.module.css";
@@ -37,11 +37,14 @@ class CreationPage extends React.Component<{}, Script> {
       );
 
       axios
-        .post("localhost:5000/scripts", JSON.stringify(this.state))
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-        });
+        .post("http://localhost:5000/Scripts", JSON.stringify(this.state))
+          .then((res : AxiosResponse) => {
+            console.log(res.status);
+            console.log(res.data);
+          })
+          .catch((e :AxiosError) => {
+            console.error(e.name);
+          })
     }
   }
 

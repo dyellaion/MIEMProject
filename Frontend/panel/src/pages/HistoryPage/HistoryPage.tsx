@@ -1,14 +1,10 @@
-import { Folder } from "@mui/icons-material";
 import {
   Container,
   List,
   Grid,
-  ListItemText,
   Typography,
-  ListItem,
-  ListItemIcon,
 } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import React from "react";
 import { History } from "../../types/response";
 import HistoryItem from "./HistoryItem";
@@ -17,13 +13,37 @@ type HistoryState = {
   scripts: History[],
 }
 
+const sampleHistory: History[] = [
+  {
+    id: 0,
+    scriptName: "Script1",
+    date: "Date"
+  },
+  {
+    id: 1,
+    scriptName: "Script2",
+    date: "New date"
+  },
+]
+
 class HistoryPage extends React.Component<{}, HistoryState> {
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      scripts: []
+    }
+  }
+
   componentDidMount() {
-    axios.get("localhost:5000/scripts_running")
-    .then(res => {
-      const scripts = res.data;
-      this.setState(scripts);
-    })
+    axios.get("http://localhost:5000/ScriptsRunning")
+      .then((res: AxiosResponse) => {
+        const scripts = res.data;
+        this.setState(scripts);
+      })
+      .catch((e: AxiosError) => {
+        console.error(e.name);
+      })
   }
 
   render(): React.ReactNode {
