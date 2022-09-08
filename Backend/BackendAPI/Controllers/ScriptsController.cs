@@ -9,7 +9,7 @@ using BackendAPI.Models;
 
 namespace BackendAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class ScriptsController : ControllerBase
     {
@@ -62,6 +62,7 @@ namespace BackendAPI.Controllers
             {
                 var found = _context.ScriptsRunning.FirstOrDefault(s => s.ScriptID.Equals((id)));
                 scriptRunning.ID = found.ID;
+                scriptRunning.ScriptName = script.scriptName;
                 var local = _context.Set<ScriptRunning>()
                     .Local
                     .FirstOrDefault(s => s.ScriptID == id);
