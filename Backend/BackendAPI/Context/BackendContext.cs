@@ -30,6 +30,7 @@ namespace BackendAPI.Context
                 );
         }
         public DbSet<Script> Scripts { get; set; }
+        public DbSet<ScriptRunning> ScriptsRunning { get; set; }
     }
 }
 
