@@ -9,7 +9,7 @@ using BackendAPI.Models;
 
 namespace BackendAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class ScriptsRunningController : ControllerBase
     {
