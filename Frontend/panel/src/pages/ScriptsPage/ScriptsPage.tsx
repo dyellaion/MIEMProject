@@ -48,7 +48,10 @@ class ScriptsPage extends React.Component<{}, CreationPageState> {
   componentDidMount() {
     axios.get("http://localhost:5000/Scripts").then((res) => {
       const data = res.data;
-      this.setState(data);
+      console.log(data);
+      this.setState({
+        scripts: data
+      });
     });
   }
 

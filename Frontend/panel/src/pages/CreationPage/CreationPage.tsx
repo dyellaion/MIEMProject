@@ -35,9 +35,14 @@ class CreationPage extends React.Component<{}, Script> {
       alert(
         `${this.state.scriptName} : ${this.state.path} : ${this.state.lang}`
       );
-
+const customConfig = {
+    headers: {
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json'
+    }
+};
       axios
-        .post("http://localhost:5000/Scripts", JSON.stringify(this.state))
+        .post("http://localhost:5000/Scripts", JSON.stringify(this.state), customConfig)
           .then((res : AxiosResponse) => {
             console.log(res.status);
             console.log(res.data);

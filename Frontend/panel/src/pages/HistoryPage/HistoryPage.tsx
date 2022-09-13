@@ -13,18 +13,6 @@ type HistoryState = {
   scripts: History[],
 }
 
-const sampleHistory: History[] = [
-  {
-    id: 0,
-    scriptName: "Script1",
-    date: "Date"
-  },
-  {
-    id: 1,
-    scriptName: "Script2",
-    date: "New date"
-  },
-]
 
 class HistoryPage extends React.Component<{}, HistoryState> {
   constructor(props: {}) {
@@ -39,7 +27,10 @@ class HistoryPage extends React.Component<{}, HistoryState> {
     axios.get("http://localhost:5000/ScriptsRunning")
       .then((res: AxiosResponse) => {
         const scripts = res.data;
-        this.setState(scripts);
+        console.log(scripts);
+        this.setState({
+          scripts: scripts
+        });;
       })
       .catch((e: AxiosError) => {
         console.error(e.name);
@@ -55,7 +46,7 @@ class HistoryPage extends React.Component<{}, HistoryState> {
           </Typography>
           <List>
             {this.state.scripts.map((item) => {
-              return <HistoryItem id={item.id} primary={item.scriptName} secondary={item.date}/>;
+              return <HistoryItem key={item.scriptID + " " + item.id} id={item.scriptID} primary={item.scriptName} secondary={item.dateTime}/>;
             })}
           </List>
         </Grid>

@@ -25,7 +25,7 @@ type CardProps = {
 class ScriptCard extends React.Component<CardProps> {
   runHandler() {
     axios
-      .get(`http://localhost:5000//Scripts/${this.props.data.id}`)
+      .get(`http://localhost:5000/Scripts/${this.props.data.id}`)
       .then((rsp: AxiosResponse) => {
         console.log("Success!");
       })

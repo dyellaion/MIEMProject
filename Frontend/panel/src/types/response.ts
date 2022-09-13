@@ -7,6 +7,7 @@ export interface Script {
 
 export interface History {
   id: number;
+  scriptID: number;
   scriptName: string;
-  date: string;
+  dateTime: string;
 }
