@@ -9,8 +9,11 @@ namespace BackendAPI
             IScriptExecuter ret = null;
             switch (lang)
             {
-                case "python":
-                    ret = new PyExecuter(path);
+                case "python2":
+                    ret = new Py2Executer(path);
+                    break;
+                case "python3":
+                    ret = new Py3Executer(path);
                     break;
                 case "ruby":
                     ret = new RubyExecuter(path);
@@ -18,7 +21,7 @@ namespace BackendAPI
                 case "php":
                     ret = new PHPExecuter(path);
                     break;
-                case "cpp":
+                case "c":
                     ret = new CppExecuter(path);
                     break;
                 case "perl":

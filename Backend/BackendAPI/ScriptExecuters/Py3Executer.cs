@@ -4,11 +4,11 @@ using System.IO;
 
 namespace BackendAPI
 {
-    public class PyExecuter : IScriptExecuter
+    public class Py3Executer : IScriptExecuter
     {
         public string path { get; private set; }
 
-        public PyExecuter(string path)
+        public Py3Executer(string path)
         {
             if (!File.Exists(path))
             {
